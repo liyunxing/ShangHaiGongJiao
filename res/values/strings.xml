@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">shanghaigongjiao</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_real_bus">实时公交</string>
+
+</resources>

@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/activity_layout_style"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <include layout="@layout/app_title_layout" />
+    
+    <!-- search edit panel -->
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+		android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rect_round_shape_with_frame">
+        <Button 
+           android:id="@+id/search"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:text="搜索"
+           android:paddingLeft="5dp"
+           android:paddingRight="5dp"
+           android:gravity="center"
+           android:background="@null"
+           android:layout_alignParentRight="true"/> 
+       <EditText 
+           android:id="@+id/line_edit"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:inputType="number"
+           android:paddingLeft="5dp"
+           android:layout_toLeftOf="@id/search"
+		   android:layout_alignParentLeft="true"
+           android:background="@drawable/rect_round_shape_with_frame"/>
+    </RelativeLayout>
+
+    <!-- search  -->
+    <ListView 
+        android:id="@+id/auto_tips_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        />
+    
+    <!-- favour panel -->
+    <RelativeLayout 
+        android:id="@+id/favour_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rect_round_shape_with_frame" >
+    <TextView 
+        android:id="@+id/favour_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="收藏夹" />
+    <ListView 
+        android:id="@+id/favour_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/favour_title"
+        />"
+    </RelativeLayout>
+</LinearLayout>

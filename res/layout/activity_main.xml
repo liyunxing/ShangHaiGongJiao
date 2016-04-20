@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_alignParentBottom="true"
+    	android:background="@drawable/rect_round_shape_with_frame">
+        <TextView 
+            android:id="@+id/line_query"
+            style="@style/main_tab_btn_style"
+            android:drawableTop="@drawable/main_map_icon_route"
+            android:text="线路查询" />
+        <TextView 
+            android:id="@+id/change_query"
+            style="@style/main_tab_btn_style"
+            android:drawableTop="@drawable/main_map_icon_search"
+            android:text="换乘查询" />
+        <TextView 
+            android:id="@+id/nearby_bus"
+            style="@style/main_tab_btn_style"
+            android:drawableTop="@drawable/main_map_icon_around"
+            android:text="周边公交" />
+        <TextView 
+            android:id="@+id/real_bus"
+            style="@style/main_tab_btn_style"
+            android:drawableTop="@drawable/main_map_icon_realbus"
+            android:text="实时公交" />
+        <TextView 
+            android:id="@+id/more"
+            style="@style/main_tab_btn_style"
+            android:drawableTop="@drawable/main_map_icon_more"
+            android:text="更多" />"
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_world" />
+
+</RelativeLayout>

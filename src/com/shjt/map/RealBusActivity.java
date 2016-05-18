@@ -12,6 +12,7 @@ import com.shjt.map.utils.ToastUtils;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.*;
 
 public class RealBusActivity extends BaseActivity {
@@ -49,7 +50,7 @@ public class RealBusActivity extends BaseActivity {
     		return;
     	}
     	
-    	
+    	getLine(1, line);
     }
     
 	public static void getLine(int src, String lineId) {
@@ -76,6 +77,8 @@ public class RealBusActivity extends BaseActivity {
 		puDong.append("&my=" + getMD5String(ShJtMap.getPDMD5String() + date));
 		puDong.append("&t=" + date);
 
+		Log.e("", "----------- pu xi = " + puXi.toString() + ", pu dong = " + puDong.toString());
+		
 		String url = puXi.toString();
 		HttpHelper.getStringVolley(url, tag, new HttpCallback() {
 

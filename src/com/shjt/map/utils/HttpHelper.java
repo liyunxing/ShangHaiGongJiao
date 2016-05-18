@@ -101,7 +101,7 @@ public class HttpHelper {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                    	Log.e(tag, "---------- Volley Error = " + error.toString());
+                    	Log.e(tag, "---------- Volley Error = " + error.getMessage());
                     	ToastUtils.showToast(AppContext.getInstance(), "出错了 : " + error.getMessage());
                     	
                         callback.onError();

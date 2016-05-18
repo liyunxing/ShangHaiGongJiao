@@ -20,6 +20,7 @@ import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.shjt.map.AppContext;
 import com.shjt.map.BuildConfig;
@@ -32,7 +33,7 @@ public class HttpHelper {
 	private final static int TIME_OUT_SECONDS = 20 * 1000;
 	private final static int RETRY_MAX_TIMES = 3;
 
-    public static void getJSONByVolley(String url, final String tag, final HttpJsonCallback callback) {
+    public static void getJSONByVolley(String url, final String tag, final HttpCallback callback) {
     	if (TextUtils.isEmpty(url) || callback == null) {
     		Log.e("getJSONByVolley", "----------- param error");
     		return;
@@ -54,7 +55,47 @@ public class HttpHelper {
                     	}
 
 
-                        callback.jsonParser(response);
+                        callback.onSuccess(response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    	Log.e(tag, "---------- Volley Error = " + error.toString());
+                    	ToastUtils.showToast(AppContext.getInstance(), "出错了 : " + error.getMessage());
+                    	
+                        callback.onError();
+                    }
+                });
+        jsonRequest.setRetryPolicy(new DefaultRetryPolicy(TIME_OUT_SECONDS, RETRY_MAX_TIMES, 1.0f));
+        if (!TextUtils.isEmpty(tag)) {
+            jsonRequest.setTag(tag);
+        } 
+        requestQueue.add(jsonRequest);
+    }
+    
+    public static void getStringVolley(String url, final String tag, final HttpCallback callback) {
+    	if (TextUtils.isEmpty(url) || callback == null) {
+    		Log.e("getJSONByVolley", "----------- param error");
+    		return;
+    	}
+    	Log.e(tag, "--- get --- url = " + url);
+    	if (!isNetworkConnected(AppContext.getInstance())) {
+    		ToastUtils.showToast(AppContext.getInstance(), "未联网，请联网后再试");
+    		
+    		return;
+    	}
+    	
+        final StringRequest jsonRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                    	if (BuildConfig.DEBUG) {
+                    		Log.e(tag, "----get---- response json = "
+                    				+ (response == null ? "null" : response.toString()));
+                    	}
+
+                        callback.onSuccess(response);
                     }
                 },
                 new Response.ErrorListener() {

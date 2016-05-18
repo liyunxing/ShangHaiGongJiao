@@ -2,8 +2,8 @@ package com.shjt.map.utils;
 
 import org.json.JSONObject;
 
-public interface HttpJsonCallback {
-	public void jsonParser(JSONObject json);
+public interface HttpCallback {
+	public void onSuccess(String json);
 
     public void onError();
     

@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class BaseActivity extends Activity implements View.OnClickListener {
-	public String tag;
+	public static String tag;
 	protected Activity mContext = null;
 	protected final boolean DEGUG = true;
 	protected int resId = -1;
